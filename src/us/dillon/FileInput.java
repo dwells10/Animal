@@ -1,39 +1,56 @@
 package us.dillon;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
- * This class reads data from a file and and opens a new input and output stream if the file is found.
+ * @author Matt Green Edited by Dillon Wells
  */
-
 public class FileInput {
 
+    private BufferedReader in = null;
+    private String fileName;
 
-    FileInputStream in = null;
-    FileOutputStream out = null;
-
-    /**
-     *
-     *
-     * @param fileName taks the name of a file
-     */
-    public FileHandler(String fileName) {
-
+    public FileInput(String fileName) {
+        this.fileName = fileName;
         try {
-            in = new FileInputStream("input.txt");
-            out = new FileOutputStream("output.txt");
+            in = new BufferedReader(new FileReader(fileName));
+        } catch (FileNotFoundException e) {
+            System.out.println("File Open Error: " + fileName + " " + e);
+        }
+    }
 
-            int c;
-            while ((c = in.read()) != -1) {
-                out.write(c);
+    public void fileRead() {
+        String line;
+        try {
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
             }
-        } finally {
-            if (in != null) {
+        } catch (Exception e) {
+            System.out.println("File Write Error: " + fileName + " " + e);
+        }
+    }
+
+    public String fileReadLine() {
+        try {
+            String line = in.readLine();
+            return line;
+        } catch (Exception e) {
+            System.out.println("File Write Error: " + fileName + " " + e);
+            return null;
+        }
+    }
+
+    public void fileClose() {
+        if (in != null) {
+            try {
                 in.close();
-            }
-            if (out != null) {
-                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+
     }
 }

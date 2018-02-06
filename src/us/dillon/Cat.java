@@ -1,11 +1,14 @@
 package us.dillon;
 
-/** @author Created by Matt Green
+/** @author Matt Green Edited by Dillon Wells
  *
  * Cat class used for returning the number of mice killed per cat
  *
  */
+
+
 public class Cat extends Pet implements Talkable {
+
     /**
      * Number of mice Killed
      */
@@ -23,10 +26,10 @@ public class Cat extends Pet implements Talkable {
     }
 
     /**
+
      *
      * @return returns integer of the number of mice killed
      */
-
 
     public int getMousesKilled() {
         return mousesKilled;
@@ -60,4 +63,3 @@ public class Cat extends Pet implements Talkable {
         return "Cat: " + "name=" + name + " mousesKilled=" + mousesKilled;
     }
 }
-

@@ -1,67 +1,41 @@
 package us.dillon;
 
+import java.io.*;
 
 /**
- * @author Matt Green
- *
- * Ths class writes data to a file based on the filename given to the object.
+ * @author Matt Green Edited by Dillon Wells
  */
-
 public class FileOutput {
 
-    /**
-     * initilizes the value out out to null
-     */
-
-    FileOutputStream out = null;
-
-
-    /**
-     *
-     * @param fileName hold the filename to be written to
-     */
+    Writer out = null;
+    private String fileName;
 
     public FileOutput(String fileName) {
+        this.fileName = fileName;
         try {
-            out = new FileOutputStream(fileName);
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName)));
         }
         catch(FileNotFoundException e) {
             System.out.println("File Open Error: " + fileName + " "  + e);
         }
-        finally {
-            if (out != null) {
-                out.close();
-            }
-        }
-
     }
-
-    /**
-     *
-     * @param line writes line to file
-     */
 
     public void fileWrite(String line) {
         try {
-            out.write(line);
+            out.write(line+"\n");
         }
         catch(Exception e) {
             System.out.println("File Write Error: " + fileName + " "  + e);
         }
-        finally {
-            if (out != null) {
-                out.close();
-            }
-        }
     }
-
-    /**
-     *  Closes the file
-     */
 
     public void fileClose() {
         if (out != null) {
-            out.close();
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

@@ -3,29 +3,34 @@ package us.dillon;
 import java.util.ArrayList;
 
 public class Main {
-    static FileOutput outFile = new FileOutPut("animals.txt");
+
+    private final static FileOutput outFile = new FileOutput("animals.txt");
+    private final static FileInput inFile = new FileInput("animals.txt");
     public static void main(String[] args) {
 
         ArrayList<Talkable> zoo = new ArrayList<>();
+
+        //Lines to Replace
         zoo.add(new Dog(true, "Pete"));
-        printOut(zoo.get(0));
         zoo.add(new Cat(9, "Anne Belly"));
-        printOut(zoo.get(1));
         zoo.add(new Student(19, "Joe John Johnson"));
-        printOut(zoo.get(2));
+        //End Lines to Replace
+
         for (Talkable thing: zoo) {
             printOut(thing);
         }
-        outFile.fileOut();
+        outFile.fileClose();
+        inFile.fileRead();
+        inFile.fileClose();
+        FileInput indata = new FileInput("animals.txt");
+        String line;
+        while ((line = indata.fileReadLine()) != null) {
+            System.out.println(line);
+        }
     }
 
     public static void printOut(Talkable p)  {
-        System.out.println(p + " says=" + p.talk());
-        fileOutput.fileWrite(p + " says=" + p.talk());
-        if (p instanceof Cat) {
-            Cat c = (Cat)p;
-            System.out.println(((Cat) p).getMousesKilled());
-        }
-
+        System.out.println(p.getName() + " says=" + p.talk());
+        outFile.fileWrite(p.getName() + "|" + p.talk());
     }
 }

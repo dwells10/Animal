@@ -1,6 +1,8 @@
 package us.dillon;
 
-
+/**
+ * @author Matt Green Edited by Dillon Wells
+ */
 public abstract class Person {
     private String name;
 
@@ -18,4 +20,3 @@ public abstract class Person {
 
 
 }
-
