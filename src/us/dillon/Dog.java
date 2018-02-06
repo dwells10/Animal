@@ -1,4 +1,4 @@
-package us.mattgreen;
+package us.dillon;
 
 /** @author Matt Green
  * Class Dog is used for storing dog data. This class extends from Pet and implements Talkable

@@ -1,8 +1,6 @@
-package us.mattgreen;
+package us.dillon;
 
-/**
- * Created by mgreen14 on 12/27/17.
- */
+
 public abstract class Person {
     private String name;
 
@@ -20,3 +18,4 @@ public abstract class Person {
 
 
 }
+

@@ -1,8 +1,6 @@
-package us.mattgreen;
+package us.dillon;
 
-/**
- * Created by mgreen14 on 12/27/17.
- */
+
 public class Student extends Person implements Talkable {
     private int age;
 
@@ -24,3 +22,4 @@ public class Student extends Person implements Talkable {
         return "Can we talk about my grade.";
     }
 }
+
