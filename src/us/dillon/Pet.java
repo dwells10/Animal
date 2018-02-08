@@ -1,8 +1,5 @@
 package us.dillon;
 
-/**
- * @author Matt Green Edited by Dillon Wells
- */
 public abstract class Pet {
     protected String name;
     public Pet(String name) {
